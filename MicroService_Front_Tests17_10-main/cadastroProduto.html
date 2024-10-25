@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cadastro de Produto</h2>
+        <form id="registerForm">
+            <!-- <div class="form-group">
+                <label for="registerId">ID</label>
+                <input type="number" class="form-control" id="registerId" required>
+            </div> -->
+            <div class="form-group">
+                <label for="registerName">Nome</label>
+                <input type="text" class="form-control" id="registerNameProduct" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPrice">Preço</label>
+                <input type="text" class="form-control" id="registerPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="registerQtd">Quantidade Estoque</label>
+                <input type="number" class="form-control" id="registerQtd" required>
+            </div>
+            <div class="form-group">
+                <label for="registerData">Data Criação</label>
+                <input type="text" class="form-control" id="registerData" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('registerNameProduct').value;
+            const price = document.getElementById('registerPrice').value;
+            const qtd = document.getElementById('registerQtd').value;
+            const data = document.getElementById('registerData').value;
+
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            products.push({ name, price, qtd, data  });
+            localStorage.setItem('products', JSON.stringify(products));
+
+            alert('Produto cadastrado com sucesso!');
+            window.location.href = 'listarProduto.html';
+        });
+    </script>
+</body>
+</html>
