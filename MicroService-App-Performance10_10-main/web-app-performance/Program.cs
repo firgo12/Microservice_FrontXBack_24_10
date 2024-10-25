@@ -7,17 +7,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configurar injeção de dependência
+// Configurar injeÃ§Ã£o de dependÃªncia
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
-// 1. Defina uma política de CORS
+// 1. Defina uma polÃ­tica de CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
         policy =>
         {
-            policy.WithOrigins("127.0.0.1:5500/index.html") // Substitua pelo endereço do seu frontend
+            policy.WithOrigins("http://127.0.0.1:5500/index.html") // Substitua pelo endereÃ§o do seu frontend
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
@@ -34,7 +34,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// 2. Use a política CORS
+// 2. Use a polÃ­tica CORS
 app.UseCors("AllowSpecificOrigins");
 
 app.UseAuthorization();
